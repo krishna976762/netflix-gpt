@@ -15,6 +15,7 @@ configured css twlwind in app
 -validation
 -updated photo 
 -fetch movies rom tmdb movies
+imd usernbame urvil9767 pass regular simple
 
 
 # Features
