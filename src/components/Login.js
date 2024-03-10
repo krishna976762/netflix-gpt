@@ -9,8 +9,8 @@ import Header from "./Header";
 import checkValidateData from "../utils/Validate";
 import { auth } from "../utils/FireBase";
 import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userSlice";
-import {USER_AVATR} from '../utils/Constants'
+import { addUser } from "../redux/userSlice";
+import {BG_URL, USER_AVATR} from '../utils/Constants'
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -107,11 +107,12 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+        className="h-screen w-screen object-cover"
+          src={BG_URL}
           alt="logo"
         />
       </div>
-      <form className="absolute text-white p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0  rounded-lg bg-opacity-80">
+      <form className="absolute text-white p-12 bg-black w-full md:w-3/12 my-36 mx-auto right-0 left-0  rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
