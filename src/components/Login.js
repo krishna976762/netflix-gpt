@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { useSnackbar } from 'notistack';
 
 import Header from "./Header";
 import checkValidateData from "../utils/Validate";
@@ -12,9 +13,12 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
 import {BG_URL, USER_AVATR} from '../utils/Constants'
 
+
 const Login = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
+ 
 
   const dispatch = useDispatch();
   const name = useRef(null);
@@ -63,6 +67,9 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
+              
+              enqueueSnackbar(`${displayName} signed up successfully...!`, { variant: 'success' });
+            
             })
             .catch((error) => {
               // An error occurred
@@ -93,6 +100,8 @@ const Login = () => {
               photoURL: photoURL,
             })
           );
+          enqueueSnackbar(`${displayName} signed in successfully...!`, { variant: 'success' });
+        
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -116,6 +125,7 @@ const Login = () => {
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
+      
         {!isSignInForm && (
           <input
             ref={name}
@@ -149,6 +159,7 @@ const Login = () => {
             : "Already register? Sign In now"}
         </p>
       </form>
+      
     </div>
   );
 };

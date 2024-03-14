@@ -1,4 +1,5 @@
 import React from "react";
+import { SnackbarProvider } from 'notistack';
 import Login from "./Login";
 import Browse from "./Browse";
 
@@ -22,7 +23,13 @@ const Body = () => {
 
   return (
     <div>
+       <SnackbarProvider  anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      maxSnack={3}>
       <RouterProvider router={appRouter} />
+      </SnackbarProvider>
     </div>
   );
 };

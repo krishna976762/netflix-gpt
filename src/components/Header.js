@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { signOut } from "firebase/auth";
+import { useSnackbar } from 'notistack';
+
 import { auth } from "../utils/FireBase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +11,14 @@ import { LOGO, SUPPORTED_LANGUAGES } from "../utils/Constants";
 import { toggleGptSearchView } from "../redux/gptSlice";
 import { changeLanugae } from "../redux/coonfigSlice";
 
+
 const Header = () => {
   const user = useSelector((store) => store.user);
+  const { enqueueSnackbar  } = useSnackbar();
   const showChatGpt = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -42,6 +47,8 @@ const Header = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        enqueueSnackbar(`User loged out successfully...!`, { variant: 'success' });
+       
       })
       .catch((error) => {
         // An error happened.
@@ -88,6 +95,7 @@ const Header = () => {
           </div>
         )}
       </div>
+     
     </>
   );
 };

@@ -12,6 +12,9 @@ const GptSuggection = () => {
 
 
   return (
+    <>
+{moviesName ?
+
     <div className='p-4 m-4 bg-black text-white bg-opacity-90'>
       <div>
         {
@@ -24,6 +27,13 @@ const GptSuggection = () => {
       </div>
       
     </div>
+    :
+    <div class="flex justify-center items-center h-screen">
+  <div class="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-red-900"></div>
+</div>
+
+}
+    </>
   )
 }
 
