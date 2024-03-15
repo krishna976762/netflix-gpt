@@ -5,6 +5,7 @@ import Browse from "./Browse";
 
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import ForgetPassword from "./ForgetPassword";
 
 
 const Body = () => {
@@ -18,6 +19,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/forget-password",
+      element: <ForgetPassword />,
     },
   ]);
 

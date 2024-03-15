@@ -8,10 +8,10 @@ const MovieCard = ({ PosterPath,data }) => {
   if (!PosterPath) return null;
 
   const handleClick = () => {
-    setShowViewMore(true);
+    setShowViewMore(!showViewMore);
   };
   const handleCloseViewMore = () => {
-    setShowViewMore(false); 
+    setShowViewMore(!showViewMore); 
   };
 
   return (

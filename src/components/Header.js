@@ -88,7 +88,7 @@ const Header = () => {
             >
               {showChatGpt ? "Home Page" : "GPT Search"}
             </button>
-            <img className="w-12 h-12 mr-2 hidden md:block" src={user?.photoURL} alt="user icon" />
+            <img className="w-8 h-8 my-3 mr-2 hidden md:block" src={user?.photoURL} alt="user icon" />
             <button onClick={handleSignOut} className="font-bold text-white">
               (Sign Out)
             </button>
