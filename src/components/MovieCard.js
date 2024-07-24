@@ -4,7 +4,7 @@ import ViewMore from "./ViewMore";
 
 const MovieCard = ({ PosterPath,data }) => {
   const [showViewMore, setShowViewMore] = useState(false);
-
+ 
   if (!PosterPath) return null;
 
   const handleClick = () => {
