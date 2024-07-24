@@ -17,5 +17,5 @@ export const SUPPORTED_LANGUAGES = [{identifier:"en",name:"English"},
 
 ]
 
-export const OPENAPI_KEY =process.env.REACT_APP_OPENAPI_KEY
+export const OPENAPI =process.env.REACT_APP_OPENAPI_KEY
 
