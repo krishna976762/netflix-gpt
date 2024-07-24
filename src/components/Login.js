@@ -5,12 +5,13 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
+
 import { getAuth, } from "firebase/auth";
 import { useSnackbar } from "notistack";
 
 import Header from "./Header";
 import checkValidateData from "../utils/Validate";
-import { auth } from "../utils/FireBase";
+import { auth,requestPermissionAndToken } from "../utils/FireBase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
 import { BG_URL, USER_AVATR } from "../utils/Constants";
@@ -18,6 +19,7 @@ import { BG_URL, USER_AVATR } from "../utils/Constants";
 
 const Login = () => {
   const { enqueueSnackbar } = useSnackbar();
+
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
   const [isPasswordSet,setIspasswordSet] = useState(false)
@@ -39,6 +41,12 @@ const Login = () => {
     setIspasswordSet(false)
   }
 
+  const handleLoginSuccess = () => {
+    console.log('Login successful');
+    // Call requestPermissionAndToken after successful login
+    requestPermissionAndToken("messaging", "BI9e6UX9naXIPu2tNl1bZ2q52DpGdqWS_ZCb9WEOhd57Tzi_OmYHUA0YiLNEy3Nj4WVFmauRxTfx_qrjLowNraw");
+  };
+
   const sendForgetPassEMail = (e) =>{
     e.preventDefault();
     const email = forgetMail.current.value
@@ -54,7 +62,7 @@ const Login = () => {
     });
    
   }
-  
+
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -94,7 +102,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-
+              
               enqueueSnackbar(`${displayName} signed up successfully...!`, {
                 variant: "success",
               });
