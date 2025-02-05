@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x] 
+        node-version: 18
 
     steps:
       - name: Checkout repository
@@ -28,7 +28,7 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build React App
         run: npm run build
